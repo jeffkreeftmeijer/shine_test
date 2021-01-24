@@ -18,6 +18,7 @@ jobs:
         with:
           gleam-version: 0.13.2
       - run: rebar3 install_deps
+      - run: cd _build/default/plugins/gleam_otp; curl https://raw.githubusercontent.com/gleam-lang/otp/main/gleam.toml -o gleam.toml; rebar3 compile
       - run: rebar3 eunit
       - run: DEBUG=1 rebar3 shine
       - run: gleam format --check src test
